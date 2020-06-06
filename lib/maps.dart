@@ -51,10 +51,10 @@ class _MapsState extends State<Maps> {
     setState(() {
       _markers.add(
         Marker(
-          markerId: MarkerId("1"),
-          position: LatLng(43.588083, -79.642514),
+          markerId: MarkerId("1"), //firestore
+          position: LatLng(43.588083, -79.642514), //firestore
           infoWindow: InfoWindow(
-            title: "Store Name",
+            title: "Store Name", //pull from firestore
             snippet: "Items Available",
             onTap: () async{
               print("hi");
