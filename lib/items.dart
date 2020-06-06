@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+final dbRef = Firestore.instance;
 
 class Items extends StatefulWidget {
   Items({Key key, this.title}) : super(key: key);
@@ -195,18 +197,23 @@ class _ItemsState extends State<Items> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          
                           "Confirm",
                           style: TextStyle(
                             color: Colors.white
                           ),
                         ),
                         Icon(Icons.check,
+
                         color: Colors.white,)
+
 
                       ],
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                        snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
+                      });
+                    },
                   ),
                 ),
             ],
