@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
             children: [
               new Container(
                 color: Colors.redAccent[100],
-                child: Maps(), //1
+                //child: Maps(), //1
               ),
               Container(
                 color: Colors.red[900],
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
               ),
               new Container(
                 color: Colors.lightGreen,
-                child: Tips(),//3
+                //child: Tips(),//3
               ),
               new Container(
                 color: Colors.red,
