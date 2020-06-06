@@ -126,24 +126,7 @@ IconData makeIcon(int n){
     case 5: return Icons.save;
 
   }
-  // if (n == 0){
-  //   return Icons.invert_colors;
-  // }
-  // else if(n == 1){
-  //   return Icons.expand_more;
-  // }
-  // else if (n == 2){
-  //   return Icons.add;
-  // }
-  // else if (n == 3){
-  //   return Icons.warning;
-  // }
-  // else if(n == 4){
-  //   return Icons.lightbulb_outline;
-  // }
-  // else if(){
-
-  // }
+  
 }
 Container makeListTile(String title, String main, int n){
   return Container(

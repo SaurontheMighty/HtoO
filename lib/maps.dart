@@ -84,7 +84,7 @@ class _MapsState extends State<Maps> {
             elevation: 0,
             title: Text(
               'H to O'),
-              backgroundColor: Colors.deepPurple[800],
+              backgroundColor: Colors.blue[800],
               automaticallyImplyLeading: false,
             
           ),

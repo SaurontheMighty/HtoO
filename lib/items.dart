@@ -146,7 +146,7 @@ class _ItemsState extends State<Items> {
             fit: BoxFit.cover,
           ),
           ),
-          padding: EdgeInsets.fromLTRB(5, 30, 5, 30),
+          padding: EdgeInsets.fromLTRB(5, 16, 5, 30),
           child: Column(
             children: <Widget>[
               Container(
@@ -166,7 +166,7 @@ class _ItemsState extends State<Items> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -187,7 +187,7 @@ class _ItemsState extends State<Items> {
                   width: 140.0,
                   height: 60.0,
                   child: new FlatButton(
-                    color: Colors.white,
+                    color: Colors.deepPurple[500],
                     shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
@@ -198,11 +198,11 @@ class _ItemsState extends State<Items> {
                           
                           "Confirm",
                           style: TextStyle(
-                            color: Colors.black
+                            color: Colors.white
                           ),
                         ),
                         Icon(Icons.check,
-                        color: Colors.black,)
+                        color: Colors.white,)
 
                       ],
                     ),
@@ -227,8 +227,19 @@ class _ItemsState extends State<Items> {
   }
   return child;
 }
+
+  IconData makeIcon(String t){
+  switch(t){
+    case "W":return Icons.invert_colors;
+    case "H": return Icons.local_hospital;
+    case "T": return Icons.wc;
+  }
+  }
   Card listSectionMethod(String title, Color color1, Color color2, List<int> count) {
     return new Card(
+      shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12.0),
+  ),
       child: ListTile(
           title: Text(title.toString()),
           subtitle: getText(title, count),
@@ -249,18 +260,15 @@ class _ItemsState extends State<Items> {
                 )
               ),
               child: CircleAvatar(
-                child: Text(
-                  title[0],
-                  style: TextStyle(
-                    color: Colors.white
-                  )
+                child: Icon(
+                  makeIcon(title[0]),
                 ),
                 backgroundColor: Colors.transparent
               )
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 FlatButton(
                   onPressed: (){ countSubtract(title);}, 
@@ -273,4 +281,5 @@ class _ItemsState extends State<Items> {
         ),
       )
     );
-}}
+}
+  }
