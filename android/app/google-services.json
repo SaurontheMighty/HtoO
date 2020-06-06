@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "330821202488",
+    "firebase_url": "https://htoo-da7ff.firebaseio.com",
+    "project_id": "htoo-da7ff",
+    "storage_bucket": "htoo-da7ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330821202488:android:2b75fedc51d59998bd6ccd",
+        "android_client_info": {
+          "package_name": "com.example.htoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330821202488-bmab8o0d092boag76thflagu00gk5e77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApvYV-ZuAaXxD6o6adKNZlKQyGwPclo7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330821202488-bmab8o0d092boag76thflagu00gk5e77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
