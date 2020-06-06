@@ -42,7 +42,6 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.deepPurple[800],
               automaticallyImplyLeading: false,
             
-            
           ),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),

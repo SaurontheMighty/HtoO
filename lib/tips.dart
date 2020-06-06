@@ -19,7 +19,6 @@ class _TipsState extends State<Tips> {
     //   }
     // );
     return Scaffold(
-        
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -88,7 +87,7 @@ class _TipsState extends State<Tips> {
               //   height: 160.0,
               //   color: Colors.blue[100],
               // ),
-              makeTips("The Benefits","Drinking water has numerous health benefits. Not only does it cure annoying headaches, but drinking the recommended amount of watr daily is shown to help with constipation as well.", 1),
+              makeTips("Safety Tips For Floods","Avoid driving through flooded areas and standing water. As little as six inches of water can cause you to lose control of your vehicle.", 1),
               // Container(
               //   child: Column(
               //     mainAxisAlignment: MainAxisAlignment.start,
@@ -103,7 +102,7 @@ class _TipsState extends State<Tips> {
               //   height: 160.0,
               //   color: Colors.white,
               // ),
-              makeTips("The Benefits","Drinking water has numerous health benefits. Not only does it cure annoying headaches, but drinking the recommended amount of watr daily is shown to help with constipation as well.", 0),
+              makeTips("Efficient Usage of Water","Consider purchasing a low-volume toilet that uses less than half the water of older models. Note: In many areas, low-volume units are required by law.", 0),
               // Container(
               //   child: Column(
               //     mainAxisAlignment: MainAxisAlignment.start,
@@ -118,7 +117,7 @@ class _TipsState extends State<Tips> {
               //   height: 160.0,
               //   color: Colors.blue[100],
               // ),
-              makeTips("The Benefits","Drinking water has numerous health benefits. Not only does it cure annoying headaches, but drinking the recommended amount of watr daily is shown to help with constipation as well.", 1),
+              makeTips("Saving Water","A heavy rain eliminates the need for watering for up to two weeks. Most of the year, lawns only need one inch of water per week.", 1),
             ],
           ),
         ),
