@@ -10,11 +10,42 @@ class _TipsState extends State<Tips> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[300],
-      appBar: AppBar(
-        title: Text("tips"),
+      backgroundColor: Colors.white,
+      body: Container(
+        margin: EdgeInsets.symmetric(vertical: 0.0),
+        height: 800.0,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Container(
+              child: Text("Tip#1 drink water pls"),
+              width: 400.0,
+              height: 800.0,
+              color: Colors.blue[100],
+            ),
+            Container(
+              child: Text("Tip#1 drink water pls"),
+              width: 400.0,
+              color: Colors.blue,
+            ),
+            Container(
+              child: Text("Tip#1 drink water pls"),
+              width: 400.0,
+              color: Colors.green,
+            ),
+            Container(
+              child: Text("Tip#1 drink water pls"),
+              width: 400.0,
+              color: Colors.yellow,
+            ),
+            Container(
+              child: Text("Tip#1 drink water pls"),
+              width: 400.0,
+              color: Colors.orange,
+            ),
+          ],
+        ),
       ),
-      body: Container(),
     );
   }
 }

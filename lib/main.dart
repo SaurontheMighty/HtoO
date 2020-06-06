@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
             children: [
               Maps(),
               Items(),
-              Maps()
+              Tips()
             ],
           ),
           bottomNavigationBar: new TabBar(
