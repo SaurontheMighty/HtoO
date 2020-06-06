@@ -10,9 +10,7 @@ class _TipsState extends State<Tips> {
  
   @override
   Widget build(BuildContext context) {
-    return
-      
-         Scaffold(
+    return Scaffold(
         
         body: Container(
           decoration: BoxDecoration(
