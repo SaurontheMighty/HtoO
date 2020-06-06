@@ -80,6 +80,14 @@ class _MapsState extends State<Maps> {
 
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+            elevation: 0,
+            title: Text(
+              'H to O'),
+              backgroundColor: Colors.deepPurple[800],
+              automaticallyImplyLeading: false,
+            
+          ),
         body: Stack(
           children: <Widget>[
             GoogleMap(
