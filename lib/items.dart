@@ -14,7 +14,7 @@ class _ItemsState extends State<Items> {
   List<dynamic> itemsFiltered = [];
   Map<String, Color> itemsColorMap = new Map();
   TextEditingController searchController = new TextEditingController();
-
+  String mainText = "";
   @override
   void initState() {
     super.initState();
@@ -23,18 +23,42 @@ class _ItemsState extends State<Items> {
       filterItems();
     });
   }
- int count  = 0;
-    void countAdd(){
+ List<int> count  = [0,0,0];
+    void countAdd(String t){
       setState((){
-        count++;
-        
+          if (t == "Water bottles") {
+    count[0]++;
+  } 
+  else if(t == "Hand Sanitizers"){
+    count[1]++;
+  }
+  else if (t == "Toilet Paper"){
+    count[2]++;
+  }
+        mainText = t; 
       });
     }  
-    void countSubtract(){
+    void countSubtract(String t){
       setState((){
-        count--;
-        
+      if(count[0] != 0){
+        if (t == "Water bottles") {
+          count[0]--;
+        } 
+      }
+      if(count[1] != 0){
+   if(t == "Hand Sanitizers"){
+    count[1]--;
+  }
+      }
+  if(count[2] != 0 ){
+   if (t == "Toilet Paper"){
+    count[2]--;
+  }
+  }
+      
+        mainText = t; 
       });
+      
       
     }
 
@@ -44,7 +68,7 @@ class _ItemsState extends State<Items> {
       Colors.indigo,
       Colors.yellow,
     ];
-    List itemS = ["Water bottles", "Hand Sanitizer", "Toilet Papers"];
+    List itemS = ["Water bottles", "Hand Sanitizers", "Toilet Paper"];
     int colorIndex = 0;
     List<dynamic> _items = itemS;
     _items.forEach((item) {
@@ -135,18 +159,55 @@ class _ItemsState extends State<Items> {
                 },
               ),
             ),
+            SizedBox(
+                width: 140.0,
+                height: 60.0,
+                child: new FlatButton(
+                  color: Colors.blue[400],
+                  shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        
+                        "Confirm",
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                      ),
+                      Icon(Icons.check,
+                      color: Colors.white,)
+
+                    ],
+                  ),
+                  onPressed: (){},
+                ),
+              ),
           ],
         ),
       ),
     );
   }
-  Card listSectionMethod(String title, Color color1, Color color2, int count) {
+  Text getText(String t, List<int> count) {
+  Widget child;
+  if (t == "Water bottles") {
+    child = Text(count[0].toString());
+  } 
+  else if(t == "Hand Sanitizers"){
+    child = Text(count[1].toString());
+  }
+  else{
+    child = Text(count[2].toString());
+  }
+  return child;
+}
+  Card listSectionMethod(String title, Color color1, Color color2, List<int> count) {
     return new Card(
       child: ListTile(
           title: Text(title.toString()),
-          subtitle: Text(
-            title == "Water bottles" ?count.toString(): "0"
-          ),
+          subtitle: getText(title, count),
           leading: 
             // CircleAvatar(
             //   backgroundImage: add image for later maybe??,
@@ -178,10 +239,10 @@ class _ItemsState extends State<Items> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FlatButton(
-                  onPressed: (){ countSubtract();}, 
+                  onPressed: (){ countSubtract(title);}, 
                   child: Icon(Icons.remove)),
                 FlatButton(
-                  onPressed: (){countAdd();
+                  onPressed: (){countAdd(title);
                   print(count.toString());}, 
                   child: Icon(Icons.add)),
               ],            
