@@ -19,6 +19,12 @@ _launchURL() async {
 }
   @override
   Widget build(BuildContext context) {
+    // return new StreamBuilder(
+    //   stream: dbRef.collection('HtoO').document('Store 1').snapshots(),
+    //   builder: (context, snapshot) {
+    //     return new Text(snapshot.data["Name"]);
+    //   }
+    // );
     return Scaffold(
       appBar: AppBar(
         title: Text('H to O'),

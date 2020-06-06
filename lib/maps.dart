@@ -1,5 +1,5 @@
 import 'dart:collection';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -32,6 +32,15 @@ class _MapsState extends State<Maps> {
     
   }
 
+  static Future<void> openMap(double latitude, double longitude) async {
+    String googleUrl = 'https://www.google.com/maps/dir/?api=1&destination=$latitude,$longitude';
+    if (await canLaunch(googleUrl)) {
+      await launch(googleUrl);
+    } else {
+      throw 'Could not open the map.';
+    }
+  }
+
   void setMarkerIcon() async{
     markerIcon = await BitmapDescriptor.fromAssetImage(ImageConfiguration(), "assets/bottle.png");
   }
@@ -42,11 +51,15 @@ class _MapsState extends State<Maps> {
     setState(() {
       _markers.add(
         Marker(
-          markerId: MarkerId("1"),
-          position: LatLng(43.588083, -79.642514),
+          markerId: MarkerId("1"), //firestore
+          position: LatLng(43.588083, -79.642514), //firestore
           infoWindow: InfoWindow(
-            title: "Store Name",
+            title: "Store Name", //pull from firestore
             snippet: "Items Available",
+            onTap: () async{
+              print("hi");
+              await openMap(43.588083, -79.642514);
+            }
           ),
           onTap: (){
             setState(() {
