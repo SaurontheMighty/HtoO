@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+final dbRef = Firestore.instance;
 
 class Tips extends StatefulWidget {
   @override
@@ -11,6 +12,12 @@ class _TipsState extends State<Tips> {
  
   @override
   Widget build(BuildContext context) {
+    // return new StreamBuilder(
+    //   stream: dbRef.collection('HtoO').document('Store 1').snapshots(),
+    //   builder: (context, snapshot) {
+    //     return new Text(snapshot.data["Name"]);
+    //   }
+    // );
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
