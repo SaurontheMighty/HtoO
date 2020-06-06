@@ -82,7 +82,6 @@ class _MapsState extends State<Maps> {
     mapController = controller;
     mapController.setMapStyle(_mapStyle);
     setState(() {
-      
     });
   }
 
