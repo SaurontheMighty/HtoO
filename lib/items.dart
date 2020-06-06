@@ -100,17 +100,21 @@ class _ItemsState extends State<Items> {
         String searchTerm = searchController.text.toLowerCase();
         String itemName = item.toString().toLowerCase();
         bool nameMatches = itemName.contains(searchTerm);
-        
+        print(itemName);
+        print(searchTerm);
+        print(nameMatches);
+        print(item);
         if (nameMatches == true) {
           return true;
         }
 
       });
-
+      print("YES");
       setState(() {
         itemsFiltered = _items;
       });
     }else{
+      print("NOT");
       setState(() {
         itemsFiltered = items;
       });
@@ -120,73 +124,85 @@ class _ItemsState extends State<Items> {
   @override
   Widget build(BuildContext context) {
     bool isSearching = searchController.text.isNotEmpty;
-   
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.deepPurple[800],
+      //   title: Text("H to O"),
+      // ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(5, 7, 5, 20),
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  labelText: 'Search',
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(
-                      color: Theme.of(context).primaryColor
+          decoration: BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage("assets/appbackground.jpg"),
+            fit: BoxFit.cover,
+          ),
+          ),
+          padding: EdgeInsets.fromLTRB(5, 30, 5, 30),
+          child: Column(
+            children: <Widget>[
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                      borderSide: new BorderSide(
+                        color: Colors.black
+                      )
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.black
                     )
                   ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Theme.of(context).primaryColor
-                  )
                 ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: isSearching == true ? itemsFiltered.length : items.length,
-                itemBuilder: (context, index) {
-                  dynamic essentials = isSearching == true ? itemsFiltered[index] : items[index];
-                  
-                  var baseColor = itemsColorMap[essentials.toString()] as dynamic;
+              SizedBox(height: 10),
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: isSearching == true ? itemsFiltered.length : items.length,
+                  itemBuilder: (context, index) {
+                    dynamic essentials = isSearching == true ? itemsFiltered[index] : items[index];
+                    
+                    var baseColor = itemsColorMap[essentials.toString()] as dynamic;
 
-                  Color color1 = baseColor[800];
-                  Color color2 = baseColor[400];
-                  
-                  return listSectionMethod(essentials.toString(), color1, color2, count);
-                },
-              ),
-            ),
-            SizedBox(
-                width: 140.0,
-                height: 60.0,
-                child: new FlatButton(
-                  color: Colors.blue[400],
-                  shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
+                    Color color1 = baseColor[800];
+                    Color color2 = baseColor[400];
+                    print(essentials.toString());
+                    return listSectionMethod(essentials.toString(), color1, color2, count);
+                  },
                 ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        
-                        "Confirm",
-                        style: TextStyle(
-                          color: Colors.white
-                        ),
-                      ),
-                      Icon(Icons.check,
-                      color: Colors.white,)
-
-                    ],
+              ),
+              SizedBox(
+                  width: 140.0,
+                  height: 60.0,
+                  child: new FlatButton(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
-                  onPressed: (){},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          
+                          "Confirm",
+                          style: TextStyle(
+                            color: Colors.black
+                          ),
+                        ),
+                        Icon(Icons.check,
+                        color: Colors.black,)
+
+                      ],
+                    ),
+                    onPressed: (){},
+                  ),
                 ),
-              ),
-          ],
-        ),
+            ],
+          ),
       ),
     );
   }
@@ -251,8 +267,4 @@ class _ItemsState extends State<Items> {
         
     )
     );
-}
-
-
-
-}
+}}
