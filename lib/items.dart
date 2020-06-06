@@ -29,10 +29,10 @@ class _ItemsState extends State<Items> {
           if (t == "Water bottles") {
     count[0]++;
   } 
-  else if(t == "Hand Sanitizer"){
+  else if(t == "Hand Sanitizers"){
     count[1]++;
   }
-  else if (t == "Toilet Papers"){
+  else if (t == "Toilet Paper"){
     count[2]++;
   }
         mainText = t; 
@@ -40,17 +40,22 @@ class _ItemsState extends State<Items> {
     }  
     void countSubtract(String t){
       setState((){
-      if(count[0] != 0 && count[1] != 0 && count[2] !=0){
+      if(count[0] != 0){
         if (t == "Water bottles") {
           count[0]--;
         } 
-  else if(t == "Hand Sanitizer"){
+      }
+      if(count[1] != 0){
+   if(t == "Hand Sanitizers"){
     count[1]--;
   }
-  else if (t == "Toilet Papers"){
+      }
+  if(count[2] != 0 ){
+   if (t == "Toilet Paper"){
     count[2]--;
   }
-      }
+  }
+      
         mainText = t; 
       });
       
@@ -63,7 +68,7 @@ class _ItemsState extends State<Items> {
       Colors.indigo,
       Colors.yellow,
     ];
-    List itemS = ["Water bottles", "Hand Sanitizer", "Toilet Papers"];
+    List itemS = ["Water bottles", "Hand Sanitizers", "Toilet Paper"];
     int colorIndex = 0;
     List<dynamic> _items = itemS;
     _items.forEach((item) {
@@ -165,8 +170,16 @@ class _ItemsState extends State<Items> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text("Confirm"),
-                      Icon(Icons.check)
+                      Text(
+                        
+                        "Confirm",
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                      ),
+                      Icon(Icons.check,
+                      color: Colors.white,)
+
                     ],
                   ),
                   onPressed: (){},
@@ -182,7 +195,7 @@ class _ItemsState extends State<Items> {
   if (t == "Water bottles") {
     child = Text(count[0].toString());
   } 
-  else if(t == "Hand Sanitizer"){
+  else if(t == "Hand Sanitizers"){
     child = Text(count[1].toString());
   }
   else{
