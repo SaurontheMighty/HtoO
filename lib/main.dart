@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Container(
       child: DefaultTabController(
-        length: 4,
+        length: 3,
         child: new Scaffold(
           appBar: AppBar(
             title: Text(
@@ -42,64 +42,34 @@ class _HomeState extends State<Home> {
                 fontWeight: FontWeight.bold
               ),
             ),
-            backgroundColor: Colors.redAccent,
             automaticallyImplyLeading: false,
           ),
           body: TabBarView(
             children: [
-              new Container(
-                color: Colors.redAccent[100],
-                child: Maps(), //1
-              ),
-              Container(
-                color: Colors.red[900],
-                child: new Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Friends: ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.white
-                        ),
-                      ),
-                    ),
-                    Items()//2
-                  ],
-                ),
-              ),
-              new Container(
-                color: Colors.lightGreen,
-                child: Tips(),//3
-              ),
-              new Container(
-                color: Colors.red,
-              ),
+              Maps(),
+              Items(),
+              Maps()
             ],
           ),
           bottomNavigationBar: new TabBar(
           tabs: [
             Tab(
-              icon: new Icon(Icons.home),
+              icon: new Icon(Icons.map),
             ),
             Tab(
-              icon: new Icon(Icons.chat_bubble),
+              icon: new Icon(Icons.search),
             ),
             Tab(
-              icon: new Icon(Icons.person),
+              icon: new Icon(Icons.info),
             ),
-            Tab(icon: new Icon(Icons.settings),)
           ],
-          labelColor: Colors.redAccent,
-          unselectedLabelColor: Colors.black,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.blue[900],
           indicatorSize: TabBarIndicatorSize.label,
           indicatorPadding: EdgeInsets.all(5.0),
-          indicatorColor: Colors.redAccent,
+          indicatorColor: Colors.white,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.blue,
         ),
       )
     );
