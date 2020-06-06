@@ -35,14 +35,7 @@ class _HomeState extends State<Home> {
       child: DefaultTabController(
         length: 3,
         child: new Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            title: Text(
-              'H to O'),
-              backgroundColor: Colors.deepPurple[800],
-              automaticallyImplyLeading: false,
-            
-          ),
+          
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [

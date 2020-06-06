@@ -131,6 +131,14 @@ class _ItemsState extends State<Items> {
       //   backgroundColor: Colors.deepPurple[800],
       //   title: Text("H to O"),
       // ),
+      appBar: AppBar(
+            elevation: 0,
+            title: Text(
+              'H to O'),
+              backgroundColor: Colors.deepPurple[800],
+              automaticallyImplyLeading: false,
+            
+          ),
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -263,8 +271,6 @@ class _ItemsState extends State<Items> {
                   child: Icon(Icons.add)),
               ],            
         ),
-        
-        
-    )
+      )
     );
 }}
