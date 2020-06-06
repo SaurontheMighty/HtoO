@@ -45,10 +45,11 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: false,
           ),
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               Maps(),
               Items(),
-              Maps()
+              Tips()
             ],
           ),
           bottomNavigationBar: new TabBar(
