@@ -154,6 +154,24 @@ class _ItemsState extends State<Items> {
                 },
               ),
             ),
+            SizedBox(
+                width: 140.0,
+                height: 60.0,
+                child: new FlatButton(
+                  color: Colors.blue[400],
+                  shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Confirm"),
+                      Icon(Icons.check)
+                    ],
+                  ),
+                  onPressed: (){},
+                ),
+              ),
           ],
         ),
       ),
