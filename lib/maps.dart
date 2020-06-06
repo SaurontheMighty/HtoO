@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Maps extends StatefulWidget {
   final int storeID;
@@ -20,6 +21,7 @@ class _MapsState extends State<Maps> {
   Set<Marker> _markers = HashSet<Marker>();
   LatLng _center;
   BitmapDescriptor markerIcon;
+  final databaseReference = Firestore.instance;
 
   @override
   void initState() {
@@ -29,7 +31,38 @@ class _MapsState extends State<Maps> {
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
       _mapStyle = string;
     });
-    
+    databaseReference
+        .collection("HtoO")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach(
+        (f) {
+        _markers.add(
+          Marker(
+            markerId: MarkerId("${f.data["MarkerID"]}"),
+            position: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude),
+            infoWindow: InfoWindow(
+              title: "${f.data["Name"]}",
+              snippet: "Gallons of Water Available: ${f.data["Water Bottle"]}",
+              onTap: () async{
+                print("hi");
+                await openMap(f.data["Location"].latitude,f.data["Location"].longitude);
+              }
+            ),
+            onTap: (){
+              setState(() {
+                CameraPosition(target: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude), zoom: 20);
+              });
+            },
+            icon: markerIcon
+          )
+          );
+        }
+      );
+      setState(() {
+        print("RESTART");
+      });
+    });
   }
 
   static Future<void> openMap(double latitude, double longitude) async {
@@ -49,26 +82,7 @@ class _MapsState extends State<Maps> {
     mapController = controller;
     mapController.setMapStyle(_mapStyle);
     setState(() {
-      _markers.add(
-        Marker(
-          markerId: MarkerId("1"), //firestore
-          position: LatLng(43.588083, -79.642514), //firestore
-          infoWindow: InfoWindow(
-            title: "Store Name", //pull from firestore
-            snippet: "Items Available",
-            onTap: () async{
-              print("hi");
-              await openMap(43.588083, -79.642514);
-            }
-          ),
-          onTap: (){
-            setState(() {
-              CameraPosition(target: LatLng(43.588083, -79.642514), zoom: 20);
-            });
-          },
-          icon: markerIcon
-        ),
-      );
+      
     });
   }
 
@@ -78,19 +92,14 @@ class _MapsState extends State<Maps> {
       _center = widget.location;
     }
 
+    print("THIS IS MARKERS");
+    print(_markers);
+
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-            elevation: 0,
-            title: Text(
-              'H to O'),
-              backgroundColor: Colors.deepPurple[800],
-              automaticallyImplyLeading: false,
-            
-          ),
         body: Stack(
           children: <Widget>[
-            GoogleMap(
+            _markers.isNotEmpty?GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
                 target: _center,
@@ -98,7 +107,7 @@ class _MapsState extends State<Maps> {
               ),
               myLocationEnabled: true,
               markers: _markers,
-            ),
+            ):Text('LOADING...'),
           ],
         ),
       ),
