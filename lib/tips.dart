@@ -18,34 +18,88 @@ class _TipsState extends State<Tips> {
           scrollDirection: Axis.vertical,
           children: <Widget>[
             Container(
-              child: Text("Tip#1 drink water pls"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("Drinking 8 Glasses", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("To prevent dehydration, you need to drink adequate amounts of water. Health authorities commonly recommend eight 8-ounce glasses, which equals about 2 liters. Remember to drink your water!", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
               width: 400.0,
-              height: 50.0,
+              height: 160.0,
+              color: Colors.white,
+            ),
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("Did you know?", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("Today, 785 million people – 1 in 9 – lack access to safe water and 2 billion people. HtoO works to help people find sources of water, and other essentials items near them.", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
+              width: 400.0,
+              height: 160.0,
               color: Colors.blue[100],
             ),
             Container(
-              child: Text("Tip#1 drink water pls"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("The Benefits", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("Drinking water has numerous health benefits. Not only does it cure annoying headaches, but drinking the recommended amount of watr daily is shown to help with constipation as well.", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
               width: 400.0,
-              height: 50.0,
-              color: Colors.blue,
+              height: 160.0,
+              color: Colors.white,
             ),
             Container(
-              child: Text("Tip#1 drink water pls"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("Did you know?", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("Today, 785 million people – 1 in 9 – lack access to safe water and 2 billion people. HtoO works to help people find sources of water, and other essentials items near them.", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
               width: 400.0,
-              height: 50.0,
-              color: Colors.green,
+              height: 160.0,
+              color: Colors.blue[100],
             ),
             Container(
-              child: Text("Tip#1 drink water pls"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("Drinking 8 Glasses", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("To prevent dehydration, you need to drink adequate amounts of water. Health authorities commonly recommend eight 8-ounce glasses, which equals about 2 liters. Remember to drink your water!", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
               width: 400.0,
-              height: 50.0,
-              color: Colors.yellow,
+              height: 160.0,
+              color: Colors.white,
             ),
             Container(
-              child: Text("Tip#1 drink water pls"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                Text(""),
+                Text("Did you know?", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text(""),
+                Text("Today, 785 million people – 1 in 9 – lack access to safe water and 2 billion people. HtoO works to help people find sources of water, and other essentials items near them.", textAlign: TextAlign.center, style: TextStyle(fontSize: 16.0)),
+              ]),
               width: 400.0,
-              height: 50.0,
-              color: Colors.orange,
+              height: 160.0,
+              color: Colors.blue[100],
             ),
           ],
         ),
