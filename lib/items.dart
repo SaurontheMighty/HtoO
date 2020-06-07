@@ -146,7 +146,7 @@ class _ItemsState extends State<Items> {
       appBar: AppBar(
             elevation: 0,
             title: Text(
-              'H to O'),
+              'Shopping List'),
               backgroundColor: Colors.deepPurple[800],
               automaticallyImplyLeading: false,
             
