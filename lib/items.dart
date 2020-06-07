@@ -213,10 +213,10 @@ class _ItemsState extends State<Items> {
                       ],
                     ),
                     onPressed: (){
-                      /* dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                      dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
                         snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
-                      }); */
-                      widget.callback({});
+                      });
+                      widget.callback({});//{StoreID: Latlng}
                     },
                   ),
                 ),
