@@ -31,13 +31,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   LatLng callback;
+  bool check = false;
 
-  Widget mapFunc(callback){
+  void mapFunc(callback){
     if(callback!=null){
-      return Maps(location: callback,);
-    }
-    else{
-      Maps();
+      check=true;
     }
   }
 
@@ -50,10 +48,8 @@ class _HomeState extends State<Home> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-
-              mapFunc(callback),
-
-              Items(callback: (val)=> setState((){ callback = val;})),
+              check?Maps(location:callback):Maps(),
+              Items(callback: (val)=> setState((){ callback = val; mapFunc(val);})),
               Tips()
             ],
           ),
