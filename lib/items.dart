@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 final dbRef = Firestore.instance;
 
+typedef void MapCallback(Map<int,LatLng> callback);
+
 class Items extends StatefulWidget {
-  Items({Key key, this.title}) : super(key: key);
+  final MapCallback callback;
+  Items({Key key, this.title, this.callback}) : super(key: key);
 
   final String title;
   @override
@@ -92,7 +96,6 @@ class _ItemsState extends State<Items> {
   filterItems() {
     List<dynamic> _items = [];
     _items.addAll(items);
-    print("AAAAAAAAAAAAAAAAAA");
     print(_items);
     print(items);
     
@@ -210,9 +213,10 @@ class _ItemsState extends State<Items> {
                       ],
                     ),
                     onPressed: (){
-                      dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                      /* dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
                         snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
-                      });
+                      }); */
+                      widget.callback({});
                     },
                   ),
                 ),
