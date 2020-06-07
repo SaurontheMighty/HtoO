@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               Maps(),
-              Items(callback: (val)=> setState((){ callback = val})),
+              Items(callback: (val)=> setState((){ callback = val;})),
               Tips()
             ],
           ),
