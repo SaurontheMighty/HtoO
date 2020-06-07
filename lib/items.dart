@@ -128,12 +128,26 @@ class _ItemsState extends State<Items> {
       });
     }
   }
+  List<String> water = [];
+    List<String> toilet = [];
+    List<String> hand = [];
+    List<LatLng> latlng = [];
+  Future<List> getData() async {
+     await dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+        snapshot.documents.forEach((f) => water.add(('${f.data["Water Bottle"]}').toString()));
+      });
 
+     await dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+          snapshot.documents.forEach((f) => toilet.add(('${f.data["Toilet Paper"]}').toString()));
+        });
+
+    await dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+          snapshot.documents.forEach((f) => hand.add(('${f.data["Toilet Paper"]}').toString()));
+        });
+  }
   @override
   Widget build(BuildContext context) {
-    List<int> water = [];
-    List<int> toilet = [];
-    List<int> hand = [];
+    
     List<String> stores = ["Store 1", "Store 2","Store 3","Store 4","Store 5","Store 6","Store 7"];
     bool isSearching = searchController.text.isNotEmpty;
     return Scaffold(
@@ -229,42 +243,62 @@ class _ItemsState extends State<Items> {
 
                       ],
                     ),
-                    onPressed: (){
-                      dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
-                        snapshot.documents.forEach((f) => water.add(f.data["Water Bottle"]));
-                      });
-
-                    dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
-                        snapshot.documents.forEach((f) => toilet.add(f.data["Toilet Paper"]));
-                      });
-                       dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
-                        snapshot.documents.forEach((f) => hand.add(f.data["Hand Sanitizer"]));
-                      });
-                      for(int i = 0; i < water.length; i++){
-                          if(water[i] < count[0]){
-                              stores.removeAt(i);
+                    onPressed: () async {
+                      await getData();
+                      print(water);
+                      print(water.length);
+                      int x = 7;
+                      for(int i = 0; i < x; i++){
+                          if(int.parse(water[i]) < count[0]){
+                              stores[i] = ".";
+                         
                           }
-                          if(hand[i] < count[1]){
-                              stores.removeAt(i);
+                          else if(int.parse(toilet[i])< count[1]){
+                              stores[i] = ".";
                           }
-                          if(toilet[i] < count[2]){
-                              stores.removeAt(i);
+                          else if(int.parse(hand[i]) < count[2]){
+                              stores[i] = ".";
                           }
+                          print(stores);
+                          print(water[i]);
                         
                       }
+                      print("AAAAA");
                       print(stores);
+                      water.clear();
+                      String t = "";
+                      for(int i = 0; i < stores.length; i++){
+                        if(stores[i] != "."){
+                          t = stores[i];
+                          break;
+                        }
+                      }
+                      print(t);
+                    await dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                    snapshot.documents.forEach((f) => latlng.add(LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude)));
+                  });   
+      
+                    print(latlng);
+                    int n = int.parse(t[6]);
+                    print(latlng[n-1]);
+                    widget.callback(latlng[n-1]);
 
-                        
+                    setState(() {
+                      count[0] == 0;
+                      count[1] == 0;
+                      count[2] == 0;
+                    });
                       //{StoreID: Latlng}
 
                       //widget.callback(); //Latlng
 
-                    },
-                  ),
-                ),
-            ],
-          ),
+            },
+                  ),),
+
+              ],
+        
       ),
+    )
     );
   }
   Text getText(String t, List<int> count) {
