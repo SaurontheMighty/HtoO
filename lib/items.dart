@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 final dbRef = Firestore.instance;
 
-typedef void MapCallback(Map<int,LatLng> callback);
+typedef void MapCallback(LatLng callback);
 
 class Items extends StatefulWidget {
   final MapCallback callback;
@@ -216,7 +216,7 @@ class _ItemsState extends State<Items> {
                       dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
                         snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
                       });
-                      widget.callback({});//{StoreID: Latlng}
+                      //widget.callback(); //Latlng
                     },
                   ),
                 ),
