@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Maps(),
+              mapFunc(callback),
               Items(callback: (val)=> setState((){ callback = val;})),
               Tips()
             ],
