@@ -30,7 +30,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Map<int,LatLng> callback;
+  LatLng callback;
+
+  Widget mapFunc(callback){
+    if(callback!=null){
+      return Maps(location: callback,);
+    }
+    else{
+      Maps();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +50,9 @@ class _HomeState extends State<Home> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Maps(),
+
+              mapFunc(callback),
+
               Items(callback: (val)=> setState((){ callback = val;})),
               Tips()
             ],
