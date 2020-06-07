@@ -24,25 +24,28 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatefulWidget {
+class Home extends StatefulWidget{
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   LatLng callback;
   bool check = false;
+  TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(initialIndex:0, length: 3, vsync: this);
   }
 
   void mapFunc(callback){
     print("CALLBACK RECIEVED");
+    print(callback.latitude);
+    print(callback.longitude);
     check=true;
-    DefaultTabController.of(context).animateTo(0);
-    }
+    _tabController.animateTo(0);
   }
 
   @override
@@ -52,6 +55,7 @@ class _HomeState extends State<Home> {
         length: 3,
         child: new Scaffold(
           body: TabBarView(
+            controller: _tabController,
             physics: NeverScrollableScrollPhysics(),
             children: [
               check?Maps(location:callback):Maps(),
@@ -60,6 +64,7 @@ class _HomeState extends State<Home> {
             ],
           ),
           bottomNavigationBar: new TabBar(
+          controller: _tabController,
           tabs: [
             Tab(
               icon: new Icon(Icons.map),

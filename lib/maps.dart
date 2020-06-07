@@ -19,12 +19,14 @@ class _MapsState extends State<Maps> {
   String _mapStyle;
   Set<Marker> _markers = HashSet<Marker>();
   LatLng _center;
+  bool call;
   BitmapDescriptor markerIcon;
   final databaseReference = Firestore.instance;
 
   @override
   void initState() {
     super.initState();
+    call = false;
     _center = const LatLng(43.596700, -79.651438);
     setMarkerIcon();
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
@@ -81,14 +83,17 @@ class _MapsState extends State<Maps> {
     mapController = controller;
     mapController.setMapStyle(_mapStyle);
     setState(() {
+      if(call==true){
+        mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: widget.location, zoom: 20)));
+      }
     });
   }
+  
 
   @override
   Widget build(BuildContext context) {
-    if(widget.location!=null){
-      _center = widget.location;
-      mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: widget.location, zoom: 20)));
+    if(widget.location!=null && _markers.isNotEmpty){
+      call = true;
     }
 
     print("THIS IS MARKERS");
