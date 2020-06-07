@@ -75,6 +75,9 @@ class _ItemsState extends State<Items> {
       Colors.yellow,
     ];
     List itemS = ["Water bottles", "Hand Sanitizers", "Toilet Paper"];
+   
+    List<int> toilet = new List(7);
+    List<int> hand = new List(7);
     int colorIndex = 0;
     List<dynamic> _items = itemS;
     _items.forEach((item) {
@@ -128,6 +131,10 @@ class _ItemsState extends State<Items> {
 
   @override
   Widget build(BuildContext context) {
+    List<int> water = [];
+    List<int> toilet = [];
+    List<int> hand = [];
+    List<String> stores = ["Store 1", "Store 2","Store 3","Store 4","Store 5","Store 6","Store 7"];
     bool isSearching = searchController.text.isNotEmpty;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -224,11 +231,31 @@ class _ItemsState extends State<Items> {
                     ),
                     onPressed: (){
                       dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
-                        snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
+                        snapshot.documents.forEach((f) => water.add(f.data["Water Bottle"]));
                       });
 
+                    dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                        snapshot.documents.forEach((f) => toilet.add(f.data["Toilet Paper"]));
+                      });
+                       dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
+                        snapshot.documents.forEach((f) => hand.add(f.data["Hand Sanitizer"]));
+                      });
+                      for(int i = 0; i < water.length; i++){
+                          if(water[i] < count[0]){
+                              stores.removeAt(i);
+                          }
+                          if(hand[i] < count[1]){
+                              stores.removeAt(i);
+                          }
+                          if(toilet[i] < count[2]){
+                              stores.removeAt(i);
+                          }
                         
-                      });//{StoreID: Latlng}
+                      }
+                      print(stores);
+
+                        
+                      //{StoreID: Latlng}
 
                       //widget.callback(); //Latlng
 
