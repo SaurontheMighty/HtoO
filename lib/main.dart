@@ -33,9 +33,15 @@ class _HomeState extends State<Home> {
   LatLng callback;
   bool check = false;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void mapFunc(callback){
     if(callback!=null){
       check=true;
+      DefaultTabController.of(context).animateTo(0);
     }
   }
 
