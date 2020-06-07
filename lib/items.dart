@@ -30,6 +30,7 @@ class _ItemsState extends State<Items> {
     });
   }
  List<int> count  = [0,0,0];
+  
     void countAdd(String t){
       setState((){
           if (t == "Water bottles") {
@@ -128,6 +129,8 @@ class _ItemsState extends State<Items> {
       });
     }
   }
+
+ 
   List<String> water = [];
     List<String> toilet = [];
     List<String> hand = [];
@@ -145,6 +148,33 @@ class _ItemsState extends State<Items> {
           snapshot.documents.forEach((f) => hand.add(('${f.data["Toilet Paper"]}').toString()));
         });
   }
+  howAlertDialog(BuildContext context) {
+
+  // set up the button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () { 
+      Navigator.pop(context);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Error"),
+    content: Text("No nearby stores match your request"),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     
@@ -261,7 +291,7 @@ class _ItemsState extends State<Items> {
                           }
                           print(stores);
                           print(water[i]);
-                        
+
                       }
                       print("AAAAA");
                       print(stores);
@@ -273,7 +303,18 @@ class _ItemsState extends State<Items> {
                           break;
                         }
                       }
-                      print(t);
+                      int y = 0;
+                      for(int i = 0; i < stores.length; i++){
+                        if(stores[i] == "."){
+                          y++;
+                        }
+                      }
+                      if(y==7){
+                        print("YYYYYYYY");
+                        howAlertDialog(context);
+                      }else{
+
+                        print(stores);
                     await dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
                     snapshot.documents.forEach((f) => latlng.add(LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude)));
                   });   
@@ -282,12 +323,14 @@ class _ItemsState extends State<Items> {
                     int n = int.parse(t[6]);
                     print(latlng[n-1]);
                     widget.callback(latlng[n-1]);
+                      }
 
-                    setState(() {
-                      count[0] == 0;
-                      count[1] == 0;
-                      count[2] == 0;
-                    });
+                      setState(() {
+                        count[0] = 0;
+                        count[1] = 0;
+                        count[2] = 0;
+                      });
+  
                       //{StoreID: Latlng}
 
                       //widget.callback(); //Latlng
@@ -302,17 +345,17 @@ class _ItemsState extends State<Items> {
     );
   }
   Text getText(String t, List<int> count) {
-  Widget child;
-  if (t == "Water bottles") {
-    child = Text(count[0].toString());
-  } 
-  else if(t == "Hand Sanitizers"){
-    child = Text(count[1].toString());
-  }
-  else{
-    child = Text(count[2].toString());
-  }
-  return child;
+    Widget child;
+    if (t == "Water bottles") {
+      child = Text(count[0].toString());
+    } 
+    else if(t == "Hand Sanitizers"){
+      child = Text(count[1].toString());
+    }
+    else{
+      child = Text(count[2].toString());
+    }
+    return child;
 }
 
   IconData makeIcon(String t){
