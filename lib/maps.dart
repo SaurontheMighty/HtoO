@@ -42,9 +42,8 @@ class _MapsState extends State<Maps> {
             position: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude),
             infoWindow: InfoWindow(
               title: "${f.data["Name"]}",
-              snippet: "Gallons of Water Available: ${f.data["Water Bottle"]}",
+              snippet: "Gallons of Water Available: ${f.data["Water Bottle"]} \n Bottles of Hand Sanitizer: ${f.data["Hand Sanitizer"]} \n Rolls of Toilet Paper: ${f.data["Toilet Paper"]}",
               onTap: () async{
-                print("hi");
                 await openMap(f.data["Location"].latitude,f.data["Location"].longitude);
               }
             ),
