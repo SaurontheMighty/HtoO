@@ -25,7 +25,7 @@ class _MapsState extends State<Maps> {
   @override
   void initState() {
     super.initState();
-    _center = const LatLng(43.588083, -79.642514);
+    _center = const LatLng(43.596700, -79.651438);
     setMarkerIcon();
     rootBundle.loadString('assets/mapstyle.txt').then((string) {
       _mapStyle = string;
@@ -50,7 +50,7 @@ class _MapsState extends State<Maps> {
             ),
             onTap: (){
               setState(() {
-                mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude), zoom: 20)
+                mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude), zoom: 14)
                 ));
               });
             },
