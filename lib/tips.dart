@@ -26,7 +26,7 @@ _launchURL() async {
     // );
     return Scaffold(
       appBar: AppBar(
-        title: Text('H to O'),
+        title: Text('Tips'),
         elevation: 0,
         backgroundColor: Colors.deepPurple[800],
         actions: <Widget>[
