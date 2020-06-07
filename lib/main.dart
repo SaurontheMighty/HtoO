@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:htoo/items.dart';
 import 'package:htoo/maps.dart';
 import 'package:htoo/tips.dart';
@@ -29,18 +30,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map<int,LatLng> callback;
   @override
   Widget build(BuildContext context) {
     return Container(
       child: DefaultTabController(
         length: 3,
         child: new Scaffold(
-          
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
               Maps(),
-              Items(),
+              Items(callback: (val)=> setState((){ callback = val})),
               Tips()
             ],
           ),
