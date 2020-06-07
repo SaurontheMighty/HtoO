@@ -39,9 +39,9 @@ class _HomeState extends State<Home> {
   }
 
   void mapFunc(callback){
-    if(callback!=null){
-      check=true;
-      DefaultTabController.of(context).animateTo(0);
+    print("CALLBACK RECIEVED");
+    check=true;
+    DefaultTabController.of(context).animateTo(0);
     }
   }
 

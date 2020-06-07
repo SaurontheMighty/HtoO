@@ -64,12 +64,12 @@ _launchURL() async {
           child: ListView(
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              makeListTile("Drinking 8 Glasses", "To prevent dehydration, you need to drink adequate amounts of water. Health authorities commonly recommend eight 8-ounce glasses, which equals about 2 liters. Remember to drink your water!", 0),
+              makeListTile("Saving Water", "A heavy rain eliminates the need for watering for up to two weeks. Most of the year, lawns only need one inch of water per week.", 5),
               makeListTile("Did you know?", "Today, 785 million people – 1 in 9 – lack access to safe water and 2 billion people. HtoO works to help people find sources of water, and other essentials items near them.", 1),
               makeListTile("The Benefits","Drinking water has numerous health benefits. Not only does it cure annoying headaches, but drinking the recommended amount of watr daily is shown to help with constipation as well.", 2),
               makeListTile("Safety Tips For Floods","Avoid driving through flooded areas and standing water. As little as six inches of water can cause you to lose control of your vehicle.", 3),
               makeListTile("Efficient Usage of Water","Consider purchasing a low-volume toilet that uses less than half the water of older models. Note: In many areas, low-volume units are required by law.", 4),
-              makeListTile("Saving Water", "A heavy rain eliminates the need for watering for up to two weeks. Most of the year, lawns only need one inch of water per week.", 5)
+              makeListTile("Drinking 8 Glasses", "To prevent dehydration, you need to drink adequate amounts of water. Health authorities commonly recommend eight 8-ounce glasses, which equals about 2 liters. Remember to drink your water!", 0),
             ],
           ),
         ),
