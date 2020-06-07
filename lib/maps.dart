@@ -6,10 +6,9 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Maps extends StatefulWidget {
-  final int storeID;
   final LatLng location;
   
-  Maps({this.storeID, this.location});
+  Maps({this.location});
 
   @override
   _MapsState createState() => _MapsState();
@@ -51,7 +50,8 @@ class _MapsState extends State<Maps> {
             ),
             onTap: (){
               setState(() {
-                CameraPosition(target: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude), zoom: 20);
+                mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).latitude,GeoPoint(f.data["Location"].latitude,f.data["Location"].longitude).longitude), zoom: 20)
+                ));
               });
             },
             icon: markerIcon
@@ -87,8 +87,9 @@ class _MapsState extends State<Maps> {
 
   @override
   Widget build(BuildContext context) {
-    if(widget.storeID!=null && widget.location!=null){
+    if(widget.location!=null){
       _center = widget.location;
+      mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: widget.location, zoom: 20)));
     }
 
     print("THIS IS MARKERS");
@@ -98,9 +99,14 @@ class _MapsState extends State<Maps> {
       home: Scaffold(
         appBar: AppBar(
             elevation: 0,
-            title: Text(
-              'H to O'),
-              backgroundColor: Colors.blue[800],
+            title: Image.asset("assets/logo.png"),
+            /* Text(
+              'H to O',
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+              ), */
+              backgroundColor: Colors.blue,
               automaticallyImplyLeading: false,
             
           ),
@@ -110,7 +116,7 @@ class _MapsState extends State<Maps> {
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
                 target: _center,
-                zoom: 12.0,
+                zoom: 12.5,
               ),
               myLocationEnabled: true,
               markers: _markers,
