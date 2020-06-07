@@ -1,3 +1,5 @@
+## HtoO NotUniversityHacks
+
 ## Inspiration
 In all times of crisis such as floods, natural disasters and pandemics like the one we are experiencing now, essential supplies are in large demand. In such a time it is very important for people to be able to get access to these supplies. We wanted to build an app that allowed people to quickly and efficiently find the stores which had the supplies they needed, basing the ideas off issues we all personally felt during these troubling times.
 
