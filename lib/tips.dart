@@ -27,6 +27,7 @@ _launchURL() async {
     return Scaffold(
       appBar: AppBar(
         title: Text('H to O'),
+        elevation: 0,
         backgroundColor: Colors.deepPurple[800],
         actions: <Widget>[
           PopupMenuButton<String>(
