@@ -151,14 +151,24 @@ class _ItemsState extends State<Items> {
             fit: BoxFit.cover,
           ),
           ),
-          padding: EdgeInsets.fromLTRB(5, 16, 5, 30),
+          padding: EdgeInsets.fromLTRB(7, 16, 7, 30),
           child: Column(
             children: <Widget>[
               Container(
-                color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                  color: Colors.white,
+                ),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
                 child: TextField(
                   controller: searchController,
+                  
                   decoration: InputDecoration(
+                    labelStyle: new TextStyle(
+                    color: Colors.amber
+                ),
                     border: new OutlineInputBorder(
                       borderSide: new BorderSide(
                         color: Colors.black
@@ -216,7 +226,12 @@ class _ItemsState extends State<Items> {
                       dbRef.collection("HtoO").getDocuments().then((QuerySnapshot snapshot) {
                         snapshot.documents.forEach((f) => print('${f.data["Water Bottle"]}}'));
                       });
+
+                        
+                      });//{StoreID: Latlng}
+
                       //widget.callback(); //Latlng
+
                     },
                   ),
                 ),
