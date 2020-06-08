@@ -12,7 +12,7 @@ import Firebase
     FirebaseApp.configure()
     GeneratedPluginRegistrant.register(with: self)
 
-    GMSServices.provideAPIKey("AIzaSyBrnx0Lq2qj-1KcOpJjtotpH1eyORiEWtQ")
+    GMSServices.provideAPIKey("API-KEY-HERE")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
